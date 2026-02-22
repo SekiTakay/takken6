@@ -21,7 +21,7 @@
     .reveal { color: var(--ink); }
     .reveal h2{ font-size: 42px; letter-spacing:.02em; }
     .reveal h3{ font-size: 34px; letter-spacing:.02em; }
-    .reveal p, .reveal li { font-size: 28px; line-height: 1.35; }
+    .reveal p, .reveal li { font-size: 28px; line-height: 1.4; }
     .small { font-size: 22px; color: var(--muted); }
     .k { font-weight: 800; color: var(--accent); }
     .k2 { font-weight: 800; color: var(--accent2); }
@@ -73,12 +73,12 @@
       margin-top: 10px;
     }
     .arrow{
-      display:inline-block;
+      display:block;
       padding: 10px 14px;
       border: 2px solid var(--line);
       border-radius: 14px;
       background: #fff;
-      margin: 6px 6px 6px 0;
+      margin: 8px 0;
     }
     .svg-wrap{ background:#fff; border:2px solid var(--line); border-radius:16px; padding:10px; }
     .center{ text-align:center; }
@@ -124,7 +124,7 @@
     }
     .tbl td{
       border:2px solid var(--line);
-      padding:10px 14px; text-align:center;
+      padding:10px 14px; text-align:left; vertical-align: middle;
     }
     .win{ color:#2aa876; font-weight:800; }
     .lose{ color:#e85d75; font-weight:800; }
@@ -135,6 +135,7 @@
       border-radius:999px;
       font-size:20px;
       font-weight:700;
+      margin-bottom: 5px;
     }
     .badge-g{ background:#dcfce7; color:#15803d; }
     .badge-p{ background:#fce7f3; color:#9d174d; }
@@ -143,19 +144,10 @@
 
 <body>
 
-<!-- ===================================================
-     SVG シンボルライブラリ（非表示領域）
-=================================================== -->
 <svg width="0" height="0" style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
   <defs>
     <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
       <polygon points="0 0, 10 3, 0 6" fill="#6b7280"></polygon>
-    </marker>
-    <marker id="ah-g" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
-      <polygon points="0 0, 10 3, 0 6" fill="#2aa876"></polygon>
-    </marker>
-    <marker id="ah-p" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
-      <polygon points="0 0, 10 3, 0 6" fill="#e85d75"></polygon>
     </marker>
     <style>
       .d-t{ fill:#1f2937; font-family: ui-sans-serif, "Hiragino Kaku Gothic ProN", "Noto Sans JP", Arial; }
@@ -165,7 +157,6 @@
     </style>
   </defs>
 
-  <!-- 1) 代理：基本構造 A→B→C -->
   <symbol id="diag-dairi-basic" viewBox="0 0 900 260">
     <rect x="40" y="80" width="220" height="100" rx="18" fill="#f6f7fb" stroke="#e5e7eb" stroke-width="3"/>
     <text x="150" y="140" text-anchor="middle" font-size="34" class="d-t">本人 A</text>
@@ -181,39 +172,40 @@
     <text x="410" y="210" text-anchor="middle" font-size="22" class="d-t">効果は本人へ帰属</text>
   </symbol>
 
-  <!-- 2) 代理 3要件 -->
   <symbol id="diag-dairi-3req" viewBox="0 0 900 260">
     <rect x="60"  y="60" width="240" height="140" rx="18" fill="#fff" stroke="#e5e7eb" stroke-width="3"/>
     <text x="180" y="120" text-anchor="middle" font-size="28" class="d-t d-ac">① 代理権</text>
     <text x="180" y="160" text-anchor="middle" font-size="20" class="d-s">権限がある</text>
     <rect x="330" y="60" width="240" height="140" rx="18" fill="#fff" stroke="#e5e7eb" stroke-width="3"/>
     <text x="450" y="120" text-anchor="middle" font-size="28" class="d-t d-ac">② 顕名</text>
-    <text x="450" y="160" text-anchor="middle" font-size="20" class="d-s">名乗る</text>
+    <text x="450" y="160" text-anchor="middle" font-size="20" class="d-s">本人の名を名乗る</text>
     <rect x="600" y="60" width="240" height="140" rx="18" fill="#fff" stroke="#e5e7eb" stroke-width="3"/>
     <text x="720" y="120" text-anchor="middle" font-size="28" class="d-t d-ac">③ 本人のため</text>
-    <text x="720" y="160" text-anchor="middle" font-size="20" class="d-s">効果を本人へ</text>
-    <text x="450" y="235" text-anchor="middle" font-size="22" class="d-t">3つそろう → <tspan class="d-ac">有効</tspan>（本人に効く）</text>
+    <text x="720" y="160" text-anchor="middle" font-size="20" class="d-s">効果を本人に向ける</text>
+    <text x="450" y="235" text-anchor="middle" font-size="22" class="d-t">3つの条件が揃うと → 契約は<tspan class="d-ac">有効</tspan>になり、本人に効果が帰属します</text>
   </symbol>
 
-  <!-- 3) 無権代理フロー -->
   <symbol id="diag-muken-flow" viewBox="0 0 900 320">
     <rect x="60" y="40" width="780" height="70" rx="16" fill="#f6f7fb" stroke="#e5e7eb" stroke-width="3"/>
-    <text x="450" y="86" text-anchor="middle" font-size="26" class="d-t">代理権なし → <tspan class="d-ac2">無権代理（原則無効）</tspan></text>
+    <text x="450" y="86" text-anchor="middle" font-size="26" class="d-t">代理権がないのに契約した → <tspan class="d-ac2">無権代理（原則は無効）</tspan></text>
+    
+    <text x="190" y="140" text-anchor="middle" font-size="22" class="d-t">【本人の権利】</text>
     <rect x="70"  y="150" width="240" height="110" rx="16" fill="#fff" stroke="#e5e7eb" stroke-width="3"/>
     <text x="190" y="200" text-anchor="middle" font-size="26" class="d-t d-ac">追認</text>
-    <text x="190" y="240" text-anchor="middle" font-size="20" class="d-s">本人が後からOK</text>
+    <text x="190" y="240" text-anchor="middle" font-size="20" class="d-s">後からOKを出す</text>
+    
+    <text x="580" y="140" text-anchor="middle" font-size="22" class="d-t">【相手方の権利】</text>
     <rect x="330" y="150" width="240" height="110" rx="16" fill="#fff" stroke="#e5e7eb" stroke-width="3"/>
     <text x="450" y="200" text-anchor="middle" font-size="26" class="d-t d-ac">催告</text>
-    <text x="450" y="240" text-anchor="middle" font-size="20" class="d-s">相手方→本人へ確認</text>
+    <text x="450" y="240" text-anchor="middle" font-size="20" class="d-s">本人へ確認（無視＝拒絶）</text>
+    
     <rect x="590" y="150" width="240" height="110" rx="16" fill="#fff" stroke="#e5e7eb" stroke-width="3"/>
     <text x="710" y="200" text-anchor="middle" font-size="26" class="d-t d-ac2">取消</text>
-    <text x="710" y="240" text-anchor="middle" font-size="20" class="d-s">追認なければ取消</text>
-    <line x1="310" y1="205" x2="330" y2="205" stroke="#6b7280" stroke-width="4" marker-end="url(#ah)"/>
-    <line x1="570" y1="205" x2="590" y2="205" stroke="#6b7280" stroke-width="4" marker-end="url(#ah)"/>
-    <text x="450" y="305" text-anchor="middle" font-size="22" class="d-t">追認されると → <tspan class="d-ac">有効確定</tspan>（本人に効く）</text>
+    <text x="710" y="240" text-anchor="middle" font-size="20" class="d-s">追認前に契約をナシにする</text>
+
+    <text x="450" y="305" text-anchor="middle" font-size="22" class="d-t">※本人が追認すると → 契約は<tspan class="d-ac">有効</tspan>になり、本人に効果が帰属します</text>
   </symbol>
 
-  <!-- 4) 時効タイムライン -->
   <symbol id="diag-jikou-timeline" viewBox="0 0 900 320">
     <text x="450" y="40" text-anchor="middle" font-size="26" class="d-t">消滅時効：<tspan class="d-ac2">期間</tspan>＋<tspan class="d-ac2">起算点</tspan> → <tspan class="d-ac2">完成</tspan> → <tspan class="d-ac2">援用</tspan></text>
     <line x1="80" y1="140" x2="820" y2="140" stroke="#e5e7eb" stroke-width="10" stroke-linecap="round"/>
@@ -222,72 +214,60 @@
     <text x="220" y="175" text-anchor="middle" font-size="18" class="d-s">行使できる時</text>
     <circle cx="620" cy="140" r="18" fill="#e85d75"/>
     <text x="620" y="105" text-anchor="middle" font-size="22" class="d-t">完成</text>
-    <text x="620" y="175" text-anchor="middle" font-size="18" class="d-s">期間経過</text>
+    <text x="620" y="175" text-anchor="middle" font-size="18" class="d-s">期間が過ぎた</text>
     <rect x="650" y="210" width="180" height="55" rx="14" fill="#f6f7fb" stroke="#e5e7eb" stroke-width="3"/>
-    <text x="740" y="245" text-anchor="middle" font-size="20" class="d-t">援用で効果</text>
+    <text x="740" y="245" text-anchor="middle" font-size="20" class="d-t">援用して初めて消滅</text>
     <rect x="90" y="210" width="250" height="70" rx="14" fill="#fff" stroke="#e5e7eb" stroke-width="3"/>
     <text x="215" y="240" text-anchor="middle" font-size="20" class="d-t d-ac">更新（リセット）</text>
-    <text x="215" y="268" text-anchor="middle" font-size="16" class="d-s">裁判・執行・承認</text>
+    <text x="215" y="268" text-anchor="middle" font-size="16" class="d-s">裁判・強制執行・承認</text>
     <rect x="360" y="210" width="250" height="70" rx="14" fill="#fff" stroke="#e5e7eb" stroke-width="3"/>
-    <text x="485" y="240" text-anchor="middle" font-size="20" class="d-t d-ac">完成猶予（停止）</text>
-    <text x="485" y="268" text-anchor="middle" font-size="16" class="d-s">催告・協議合意</text>
+    <text x="485" y="240" text-anchor="middle" font-size="20" class="d-t d-ac">完成猶予（一時停止）</text>
+    <text x="485" y="268" text-anchor="middle" font-size="16" class="d-s">催告・協議を行う旨の合意</text>
   </symbol>
 
-  <!-- 5) 取得時効チェック -->
   <symbol id="diag-shutoku-check" viewBox="0 0 900 320">
     <rect x="70" y="60" width="760" height="210" rx="16" fill="#fff" stroke="#e5e7eb" stroke-width="3"/>
-    <text x="450" y="105" text-anchor="middle" font-size="26" class="d-t">取得時効：成立チェック</text>
-    <text x="150" y="155" font-size="20" class="d-t">☑ 所有の意思</text>
-    <text x="150" y="190" font-size="20" class="d-t">☑ 平穏</text>
-    <text x="150" y="225" font-size="20" class="d-t">☑ 公然</text>
-    <text x="450" y="155" font-size="20" class="d-t">☑ 継続</text>
-    <text x="450" y="190" font-size="20" class="d-t">☑ 期間</text>
+    <text x="450" y="105" text-anchor="middle" font-size="26" class="d-t">取得時効が成立するための条件</text>
+    <text x="150" y="155" font-size="20" class="d-t">☑ 所有の意思がある</text>
+    <text x="150" y="190" font-size="20" class="d-t">☑ 平穏に</text>
+    <text x="150" y="225" font-size="20" class="d-t">☑ 公然と</text>
+    <text x="450" y="155" font-size="20" class="d-t">☑ 占有を継続する</text>
+    <text x="450" y="190" font-size="20" class="d-t">☑ 一定の期間が過ぎる</text>
     <rect x="620" y="140" width="180" height="55" rx="14" fill="#f6f7fb" stroke="#e5e7eb" stroke-width="3"/>
     <text x="710" y="172" text-anchor="middle" font-size="18" class="d-t">善意無過失：<tspan class="d-ac">10年</tspan></text>
     <rect x="620" y="205" width="180" height="55" rx="14" fill="#f6f7fb" stroke="#e5e7eb" stroke-width="3"/>
     <text x="710" y="237" text-anchor="middle" font-size="18" class="d-t">悪意など：<tspan class="d-ac2">20年</tspan></text>
   </symbol>
 
-  <!-- 6) 【新規追加】取得時効と登記「前か後か」タイムライン -->
   <symbol id="diag-jikou-maego" viewBox="0 0 900 340">
-    <!-- タイトル -->
-    <text x="450" y="36" text-anchor="middle" font-size="24" class="d-t">AC間の譲渡が Bの時効完成の「<tspan class="d-ac2">前</tspan>」か「<tspan class="d-ac">後</tspan>」かで結果が変わる！</text>
+    <text x="450" y="36" text-anchor="middle" font-size="24" class="d-t">元の持ち主が第三者に売却したのが、時効完成の「<tspan class="d-ac2">前</tspan>」か「<tspan class="d-ac">後</tspan>」か？</text>
 
-    <!-- 「前」パターン -->
     <rect x="40" y="60" width="380" height="120" rx="16" fill="#fff0f3" stroke="#ffd0dd" stroke-width="3"/>
     <text x="230" y="90" text-anchor="middle" font-size="22" class="d-t d-ac2">「前」パターン</text>
-    <text x="80" y="125" font-size="18" class="d-t">占有開始 → 譲渡(C登記) → 時効完成</text>
-    <text x="80" y="158" font-size="18" class="d-ac">→ Bの勝ち（登記なしでもOK）</text>
+    <text x="80" y="125" font-size="18" class="d-t">占有開始 → 第三者へ売却 → 時効完成</text>
+    <text x="80" y="158" font-size="18" class="d-ac">→ 時効取得者の勝ち（登記は不要）</text>
 
-    <!-- 「後」パターン -->
     <rect x="480" y="60" width="380" height="120" rx="16" fill="#f0fdf6" stroke="#bbf7d0" stroke-width="3"/>
     <text x="670" y="90" text-anchor="middle" font-size="22" class="d-t d-ac">「後」パターン</text>
-    <text x="520" y="125" font-size="18" class="d-t">占有開始 → 時効完成 → 譲渡(C登記)</text>
-    <text x="520" y="158" font-size="18" class="d-ac2">→ 先に登記を得た方の勝ち</text>
+    <text x="520" y="125" font-size="18" class="d-t">占有開始 → 時効完成 → 第三者へ売却</text>
+    <text x="520" y="158" font-size="18" class="d-ac2">→ 先に登記を得た方の勝ち（対抗問題）</text>
 
-    <!-- 共通ライン -->
     <line x1="80" y1="240" x2="820" y2="240" stroke="#e5e7eb" stroke-width="8" stroke-linecap="round"/>
-    <!-- 占有開始 -->
     <circle cx="160" cy="240" r="14" fill="#6b7280"/>
     <text x="160" y="225" text-anchor="middle" font-size="18" class="d-s">占有開始</text>
-    <!-- 分岐ライン -->
     <circle cx="500" cy="240" r="14" fill="#6b7280"/>
-    <text x="500" y="225" text-anchor="middle" font-size="18" class="d-s">分岐点</text>
-    <text x="350" y="285" text-anchor="middle" font-size="20" class="d-ac2">← 前：Bが登記なしでも対抗OK</text>
-    <text x="660" y="285" text-anchor="middle" font-size="20" class="d-ac">後：対抗関係（登記勝負）→</text>
+    <text x="500" y="225" text-anchor="middle" font-size="18" class="d-s">時効が完成した分岐点</text>
+    <text x="350" y="285" text-anchor="middle" font-size="20" class="d-ac2">← 前：登記がなくても勝てる</text>
+    <text x="660" y="285" text-anchor="middle" font-size="20" class="d-ac">後：登記の早い者勝ち →</text>
   </symbol>
 
 </svg>
-<!-- ===== / SVG シンボルライブラリ ===== -->
-
-
 <div class="reveal">
   <div class="slides">
 
-    <!-- ==================== 導入 ==================== -->
     <section>
       <h2>宅建 民法：<span class="k">代理</span>と<span class="k2">時効</span></h2>
-      <p class="center">―「誰に効く？」×「いつ消える？」―</p>
+      <p class="center">―「誰に責任がある？」×「いつ権利が動く？」―</p>
       <div class="box">
         <p class="small">対象：初学者 / 50分 / 出典：らくらく宅建塾 2026年版</p>
       </div>
@@ -297,10 +277,10 @@
       <h3>今日できるようになること（ゴール）</h3>
       <div class="box">
         <ul>
-          <li>代理が<span class="k">有効になる条件</span>を説明できる</li>
-          <li><span class="k">無権代理</span>と<span class="k">表見代理</span>を区別できる</li>
-          <li>消滅時効の「<span class="k2">完成</span>」と「<span class="k2">援用</span>」を言える</li>
-          <li>取得時効の要件（<span class="k2">10年/20年</span>）＋<span class="k2">登記との関係</span>を押さえる</li>
+          <li>代理が<span class="k">有効になるための条件</span>を説明できる</li>
+          <li><span class="k">無権代理</span>と<span class="k">表見代理</span>の違いを区別できる</li>
+          <li>消滅時効の「<span class="k2">完成</span>」と「<span class="k2">援用</span>」の意味を説明できる</li>
+          <li>取得時効の要件（<span class="k2">10年/20年</span>）と<span class="k2">登記のルール</span>を押さえる</li>
         </ul>
       </div>
     </section>
@@ -310,26 +290,25 @@
       <div class="grid2">
         <div class="box">
           <p><span class="tag">代理</span></p>
-          <p>本人に効くか？<br><span class="k">代理権＋顕名＋本人のため</span></p>
+          <p>契約は本人に有効になるか？<br><span class="k">代理権＋顕名＋本人のため</span></p>
         </div>
         <div class="box">
           <p><span class="tag">時効</span></p>
-          <p>消える/取るか？<br><span class="k2">期間＋起算点＋完成→援用</span></p>
+          <p>権利は消えるか？手に入るか？<br><span class="k2">期間＋起算点＋完成→援用</span></p>
         </div>
       </div>
     </section>
 
-    <!-- ==================== 第1部：代理 ==================== -->
     <section>
       <h2>第1部：代理（25分）</h2>
-      <p class="small">テーマ：契約の"効果"は誰に帰属する？</p>
+      <p class="small">テーマ：契約の"効果と責任"は誰にいくのか？</p>
     </section>
 
     <section>
       <h3>代理とは</h3>
       <div class="box">
-        <p>代理＝「代理人が法律行為をして、<span class="k">効果が本人に帰属</span>する制度」</p>
-        <p class="small">例：社員が会社名義で売買契約を結ぶ</p>
+        <p>代理＝「代理人が代わりに契約をして、<span class="k">その効果や責任が本人に直接生じる</span>制度」</p>
+        <p class="small">例：社員が会社名義で売買契約を結ぶと、会社が代金を支払う責任を負う。</p>
       </div>
     </section>
 
@@ -340,7 +319,7 @@
           <use href="#diag-dairi-basic"></use>
         </svg>
       </div>
-      <div class="note">この図を毎回の判断の"原点"にする</div>
+      <div class="note">この図を毎回の判断の"原点"にしてください。</div>
     </section>
 
     <section>
@@ -351,7 +330,7 @@
         </svg>
       </div>
       <div class="callout">
-        <p>1つでも欠けると <span class="k2">別ルート</span>（無権代理・顕名なし・自己契約 等）</p>
+        <p>1つでも欠けると <span class="k2">原則として本人には効きません</span>（無権代理などになります）</p>
       </div>
     </section>
 
@@ -360,27 +339,27 @@
       <div class="grid2">
         <div class="box">
           <p><span class="k">顕名あり</span></p>
-          <p>「私は<span class="k">Aの代理人B</span>として契約します」</p>
-          <p class="small">→ 効果はAへ</p>
+          <p>「私は<span class="k">Aの代理人B</span>として契約します」と名乗ること。</p>
+          <p class="small">→ 契約の効果や責任は、予定通りA（本人）にいきます。</p>
         </div>
         <div class="box">
           <p><span class="k2">顕名なし</span></p>
-          <p>名乗らずに契約</p>
-          <p class="small">→ 原則、Bが当事者（本人に効かない）</p>
+          <p>代理人であることを名乗らずに契約してしまった。</p>
+          <p class="small">→ 原則として、B（代理人自身）が契約の当事者として責任を負います。</p>
         </div>
       </div>
     </section>
 
     <section>
-      <h3>無権代理：代理権がないのに代理行為</h3>
+      <h3>無権代理：代理権がないのに勝手に契約した</h3>
       <div class="box">
-        <p>結論：<span class="k2">原則 無効</span></p>
-        <p class="small">ただし「追認」で有効にできる（本人が後からOK）</p>
+        <p>結論：本人には効果が生じません（<span class="k2">原則 無効</span>）。</p>
+        <p class="small">ただし、本人が後から「その契約、そのまま進めていいよ」と<span class="k">追認</span>すれば、有効にすることができます。</p>
       </div>
     </section>
 
     <section>
-      <h3>無権代理：追認・催告・取消（流れで固定）</h3>
+      <h3>無権代理：関係者が取れる手段（追認・催告・取消）</h3>
       <div class="svg-wrap">
         <svg viewBox="0 0 900 320" class="w100" role="img" aria-label="無権代理の流れ">
           <use href="#diag-muken-flow"></use>
@@ -389,59 +368,58 @@
     </section>
 
     <section>
-      <h3>無権代理人の責任（出題）</h3>
+      <h3>無権代理人の責任</h3>
       <div class="box">
-        <p>本人が追認しないとき：</p>
+        <p>本人が追認してくれなかった場合、相手方はどうなる？</p>
         <ul>
-          <li>相手方が<span class="k">善意・無過失</span>なら</li>
-          <li>無権代理人が<span class="k2">損害賠償</span>など責任</li>
+          <li>相手方が<span class="k">善意・無過失</span>（勝手に契約しているとは知らず、落ち度もない）なら、</li>
+          <li>無権代理人自身が、相手方に対して<span class="k2">契約の履行や損害賠償</span>の責任を負わなければなりません。</li>
         </ul>
       </div>
     </section>
 
     <section>
-      <h3>表見代理：見た目が"代理権あり"なら相手方保護</h3>
+      <h3>表見代理：見た目が"代理権あり"なら相手方を保護する</h3>
       <div class="callout">
-        <p><span class="k">本人に帰責性</span>があり、相手方が<span class="k">善意・無過失</span>なら</p>
-        <p>→ 本人が拘束（＝本人に効く）</p>
+        <p>本当は代理権がないのに、<span class="k">本人にも落ち度や責任（帰責性）</span>があり、騙された相手方が<span class="k">善意・無過失</span>なら</p>
+        <p>→ 相手方を保護するため、契約は有効になり<span class="k">本人が責任を負います（拘束される）</span>。</p>
       </div>
-      <div class="note">代理の最頻出。必ず「本人帰責性＋善意無過失」セットで言わせる。</div>
+      <div class="note">代理の問題で一番よく出ます。必ず「本人にも責任がある＋相手方が善意無過失」のセットで考えましょう。</div>
     </section>
 
-    <!-- ===== 【改善①】 表見代理 オーバー・アフター・ネバー ===== -->
     <section>
-      <h3>表見代理 3パターン（テキスト52頁の表）</h3>
+      <h3>表見代理 3つのパターン（テキスト52頁）</h3>
       <div class="box" style="padding:10px;">
         <table class="tbl">
           <tr>
             <th>名称</th>
             <th>状況</th>
-            <th>例</th>
+            <th>具体例</th>
           </tr>
           <tr>
             <td><span class="badge badge-p">オーバー</span></td>
-            <td>代理権はあるが<br><span class="k2">権限を超えた</span>行為</td>
-            <td>賃貸の権限しかないのに<br>売却してしまった</td>
+            <td>代理権はあるが、与えられた<span class="k2">権限を超えて</span>契約した</td>
+            <td>賃貸の権限しか与えていないのに、勝手に土地を売却してしまった</td>
           </tr>
           <tr>
             <td><span class="badge badge-p">アフター</span></td>
-            <td>代理権が<span class="k2">消滅した後</span>に行為</td>
-            <td>破産で権限消滅後に<br>そのまま契約</td>
+            <td>代理権が<span class="k2">消滅した後</span>に契約した</td>
+            <td>代理人が破産して権限がなくなったのに、そのまま契約を続けた</td>
           </tr>
           <tr>
             <td><span class="badge badge-p">ネバー</span></td>
-            <td>そもそも代理権を<br><span class="k2">与えていない</span>のに外観を作出</td>
-            <td>委任状を渡していた<br>（授権表示）</td>
+            <td>そもそも代理権を<span class="k2">一度も与えていない</span>のに、外観を作った</td>
+            <td>白紙の委任状を渡しておいたら、勝手に悪用された</td>
           </tr>
         </table>
       </div>
       <div class="callout" style="margin-top:10px;">
-        <p>3パターン共通：相手方Cが<span class="k">善意無過失</span>なら → A（本人）は拘束される</p>
+        <p>3パターン共通：騙された相手方Cが<span class="k">善意無過失</span>なら → A（本人）は責任を逃れられません！</p>
       </div>
     </section>
 
     <section>
-      <h3>無権代理 vs 表見代理（比較）</h3>
+      <h3>無権代理 vs 表見代理（比較まとめ）</h3>
       <div class="box" style="padding:10px;">
         <table class="tbl">
           <tr>
@@ -450,50 +428,49 @@
             <th>表見代理</th>
           </tr>
           <tr>
-            <td>本人は拘束？</td>
-            <td><span class="lose">原則×</span></td>
-            <td><span class="win">○（保護）</span></td>
+            <td>本人は責任を負う？</td>
+            <td><span class="lose">原則 負わない</span><br>（追認すれば負う）</td>
+            <td><span class="win">負う</span><br>（相手方が保護されるため）</td>
           </tr>
           <tr>
-            <td>追認が必要？</td>
-            <td>○</td>
-            <td>不要</td>
+            <td>本人の「追認」は必要？</td>
+            <td>必要</td>
+            <td>不要（最初から有効になる）</td>
           </tr>
           <tr>
-            <td>キー</td>
-            <td>追認・催告・取消</td>
-            <td>本人帰責性＋善意無過失</td>
+            <td>成立のキーワード</td>
+            <td>追認・催告・取消ができるか</td>
+            <td>本人に落ち度がある＋相手方が善意無過失</td>
           </tr>
         </table>
       </div>
     </section>
 
     <section>
-      <h3>自己契約・双方代理（原則禁止）</h3>
+      <h3>自己契約・双方代理（原則は禁止＝無効）</h3>
       <div class="grid2">
         <div class="box">
           <p><span class="tag">自己契約</span></p>
-          <p>代理人が自分自身と契約</p>
-          <p class="small">原則×（本人の許諾など例外）</p>
+          <p>代理人が、自分自身を相手として契約を結ぶこと。</p>
+          <p class="small">原則：無効<br>例外：あらかじめ本人が許諾した場合などは有効になります。</p>
         </div>
         <div class="box">
           <p><span class="tag">双方代理</span></p>
-          <p>同じ人が双方の代理人</p>
-          <p class="small">原則×（利害対立）</p>
+          <p>同じ人が、売主と買主など両方の代理人になること。</p>
+          <p class="small">原則：無効（両者の利害が対立するため）。<br>例外：あらかじめ双方の許諾がある場合などは有効になります。</p>
         </div>
       </div>
     </section>
 
     <section>
-      <h3>代理：最終フロー（この順で判断）</h3>
+      <h3>代理：問題を解くための３ステップ</h3>
       <div class="box">
-        <p class="arrow">① 代理権ある？ → YES：有効</p>
-        <p class="arrow">② NOなら 表見代理？（本人帰責性＋善意無過失）</p>
-        <p class="arrow">③ YES：有効（本人拘束） / NO：無効（追認の世界）</p>
+        <p class="arrow">① そもそも、正しい代理権はあるか？<br>　→ あれば契約は<span class="k">有効</span>（本人が責任を負う）。</p>
+        <p class="arrow">② 正しい代理権がない場合（無権代理）、表見代理が成立するか？<br>　→ 本人に落ち度があり、かつ相手方が善意無過失かを確認。</p>
+        <p class="arrow">③ 表見代理が成立すれば、契約は<span class="k">有効</span>（本人が責任を負う）。<br>　 成立しなければ、契約は<span class="k2">無効</span>（本人が追認しない限り効力なし）。</p>
       </div>
     </section>
 
-    <!-- 演習① -->
     <section>
       <h2>演習①：表見代理（オーバー＋ネバー）</h2>
       <div class="box">
@@ -515,22 +492,21 @@
         <div class="answer" id="ans1">
           <div class="ttl">解答（要点）</div>
           <p>
-            ①「賃貸のみ」の授権で「売却」は<span class="k2">権限外（オーバー）</span>→ 表見代理（権限外）検討。<br>
-            Cが善意無過失なら → A拘束（本人に効く）。
+            ①「賃貸のみ」の権限で「売却」したのは<span class="k2">権限外（オーバー）</span>です。ここで表見代理を検討します。<br>
+            Cが善意無過失であれば、契約は有効になり、Aは責任を負います（Cは履行を請求できる）。
           </p>
           <p>
-            ②委任状（内容：賃貸）を渡していた場合は<span class="k2">ネバー寄り</span>の外観作出。<br>
-            この場合もCが善意無過失であればA拘束。本人が外観を作った帰責性あり。
+            ②委任状を渡していた場合は<span class="k2">ネバー</span>のケースに近くなります。<br>
+            この場合も、Aは誤解されるような外観を作った責任があり、Cが善意無過失であればAは責任を負います。
           </p>
-          <div class="note">落とし穴：「権限の範囲を超えている＝即無効」ではなく、必ず表見代理を検討する。</div>
+          <div class="note">落とし穴：「権限を超えているから無効だ！」と即答せず、必ず相手方が善意無過失かどうか（表見代理）を確認してください。</div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== 第2部：時効 ==================== -->
     <section>
       <h2>第2部：時効（18分）</h2>
-      <p class="small">テーマ：時間で"権利が消える/手に入る"</p>
+      <p class="small">テーマ：一定の時間が経つことで、権利が消えたり手に入ったりする制度</p>
     </section>
 
     <section>
@@ -538,31 +514,31 @@
       <div class="grid2">
         <div class="box">
           <p><span class="tag">消滅時効</span></p>
-          <p>権利が<span class="k2">消える</span></p>
-          <p class="small">例：貸金請求権が時効で消える</p>
+          <p>持っていた権利が<span class="k2">消えてなくなる</span>こと。</p>
+          <p class="small">例：お金を返してもらう権利（貸金請求権）を放置していたら、時効で消滅してしまった。</p>
         </div>
         <div class="box">
           <p><span class="tag">取得時効</span></p>
-          <p>権利を<span class="k">取得する</span></p>
-          <p class="small">例：長年占有して所有権を取得</p>
+          <p>他人のものを、自分のものとして<span class="k">取得する</span>こと。</p>
+          <p class="small">例：他人の土地を自分のものだと信じて長年住み続けたら、本当に自分の土地になった。</p>
         </div>
       </div>
     </section>
 
     <section>
-      <h3>消滅時効：期間（型）</h3>
+      <h3>消滅時効：権利が消えるまでの期間</h3>
       <div class="box">
         <ul>
-          <li>原則：<span class="k2">5年</span>（知った時から）</li>
-          <li>不法行為：<span class="k2">3年</span>（典型）</li>
-          <li>権利行使可能から：<span class="k2">10年</span>（上限）</li>
+          <li>原則：権利を行使できると知った時から <span class="k2">5年</span></li>
+          <li>不法行為による損害賠償：損害と加害者を知った時から <span class="k2">3年</span>（典型例）</li>
+          <li>上限：権利を行使できる時から <span class="k2">10年</span>（人の生命・身体の侵害は20年）</li>
         </ul>
       </div>
-      <div class="note">数字は最小限。試験は「起算点＋完成＋援用」で落ちる。</div>
+      <div class="note">試験では、期間の数字だけでなく「いつから期間のカウントがスタートするか（起算点）」や「完成後にちゃんと主張（援用）したか」がよく引っかけとして問われます。</div>
     </section>
 
     <section>
-      <h3>消滅時効：全体像</h3>
+      <h3>消滅時効：全体像の流れ</h3>
       <div class="svg-wrap">
         <svg viewBox="0 0 900 320" class="w100" role="img" aria-label="消滅時効タイムライン">
           <use href="#diag-jikou-timeline"></use>
@@ -571,60 +547,62 @@
     </section>
 
     <section>
-      <h3>超重要：完成しただけでは消えない</h3>
+      <h3>超重要：期間が過ぎただけでは権利は消えない</h3>
       <div class="box">
-        <p style="font-size:34px;">
-          <span class="k2">完成</span> ＋ <span class="k2">援用（主張）</span> で効果が出る
+        <p style="font-size:30px;">
+          期間が経過する（<span class="k2">完成</span>） ＋ 「時効だから払いません」と主張する（<span class="k2">援用</span>）
         </p>
+        <p>この2つがセットになって初めて、権利が消滅する効果が出ます。</p>
       </div>
-      <div class="note">ここは繰り返す（初学者が一番落とす）。</div>
+      <div class="note">ここが初学者が一番間違えやすいポイントです。「5年経ったから自動的に借金がチャラになる」わけではありません。</div>
     </section>
 
-    <!-- ===== 【改善②】 援用できる人 ===== -->
     <section>
       <h3>援用できるのは誰？（テキスト65頁）</h3>
       <div class="callout">
-        <p>援用＝「時効だから払わない」と<span class="k2">主張する</span>こと</p>
+        <p>援用＝「時効が完成したので、権利は消滅しました」と<span class="k2">主張する</span>こと</p>
       </div>
       <div class="box">
-        <p>援用できる人（出題される！）</p>
+        <p>援用できる人（試験によく出ます！）</p>
         <ul>
           <li><span class="k">債務者本人</span></li>
-          <li><span class="k">保証人・連帯保証人</span>（自分も楽になるから）</li>
-          <li><span class="k">物上保証人</span>（担保提供者）</li>
-          <li><span class="k">抵当不動産の第三取得者</span></li>
+          <li><span class="k">保証人・連帯保証人</span>（本人の借金が消えれば、自分も払わなくてよくなるから）</li>
+          <li><span class="k">物上保証人</span>（担保として自分の不動産を提供した人）</li>
+          <li><span class="k">抵当不動産の第三取得者</span>（抵当権付きの不動産を買った人）</li>
         </ul>
       </div>
-      <div class="note">「時効の利益を直接受ける人」が援用権者。時効と関係ない第三者はダメ。</div>
+      <div class="note">「時効によって直接、法的な利益を受ける人」だけが援用できます。無関係な第三者は援用できません。</div>
     </section>
 
     <section>
-      <h3>更新（旧：中断）＝リセット</h3>
+      <h3>時効の「更新」＝時計の針がゼロにリセットされる</h3>
       <div class="box">
+        <p>以下の事由があると、それまで進んでいた時効期間がゼロに戻り、また最初からカウントし直しになります。</p>
         <ul>
-          <li>裁判上の請求</li>
-          <li>強制執行</li>
-          <li><span class="k">承認</span>（出やすい）← 口頭だけでOK、即リセット</li>
+          <li>裁判上の請求をして判決が確定した</li>
+          <li>強制執行を行った</li>
+          <li><span class="k">承認</span>（債務者が「借金があります」と認めること）← 出題されやすい！</li>
         </ul>
       </div>
-      <div class="note">「分割で払います」のメール1通で時効の時計がゼロに戻るイメージ。</div>
+      <div class="note">「承認」は口頭で言ったり、メールで「分割で払います」と伝えるだけで成立し、即座にリセットされます。</div>
     </section>
 
     <section>
-      <h3>完成猶予（旧：停止）＝一時ストップ</h3>
+      <h3>時効の「完成猶予」＝時計の針が一時ストップする</h3>
       <div class="box">
+        <p>以下の事由があると、一時的に時効の完成がストップします（ゼロには戻りません）。</p>
         <ul>
-          <li>催告：その後<span class="k2">6カ月</span>は完成しない</li>
-          <li>協議合意：話し合い中は進まない</li>
+          <li>催告（口頭などで「払え」と請求する）：その後<span class="k2">6カ月間</span>は時効が完成しない</li>
+          <li>協議を行う旨の合意：話し合いをしている間は時効が進まない</li>
         </ul>
       </div>
       <div class="callout">
-        <p>更新（リセット）と猶予（止まる）の違いを必ず区別する</p>
+        <p>ゼロに戻る「更新（リセット）」と、一時的に止まるだけの「完成猶予（ストップ）」の違いを必ず区別しましょう。</p>
       </div>
     </section>
 
     <section>
-      <h3>取得時効：成立要件（チェック）</h3>
+      <h3>取得時効が成立するための条件をチェック！</h3>
       <div class="svg-wrap">
         <svg viewBox="0 0 900 320" class="w100" role="img" aria-label="取得時効チェック">
           <use href="#diag-shutoku-check"></use>
@@ -633,25 +611,24 @@
     </section>
 
     <section>
-      <h3>善意10年 vs 悪意20年</h3>
+      <h3>善意無過失なら10年 vs 悪意なら20年</h3>
       <div class="grid2">
         <div class="box">
           <p><span class="tag">10年</span></p>
-          <p><span class="k">善意</span>＋<span class="k">無過失</span></p>
-          <p class="small">占有開始時だけ判定すればOK<br>（その後悪意になっても20年に延びない）</p>
+          <p><span class="k">善意</span>（他人の物だと知らなかった）＋<span class="k">無過失</span>（落ち度がない）</p>
+          <p class="small">善意無過失かどうかは「占有を始めた時」だけで判定します。途中で他人の物だと気づいても、10年のままです。</p>
         </div>
         <div class="box">
           <p><span class="tag">20年</span></p>
-          <p><span class="k2">悪意</span>（他人のものと知っている）</p>
-          <p class="small">保護は弱いので期間が長い</p>
+          <p><span class="k2">悪意</span>（他人の物だと最初から知っていた）、または善意だが過失があった</p>
+          <p class="small">保護する必要性が低いので、必要な期間が長くなります。</p>
         </div>
       </div>
-      <div class="note">善意無過失かどうかは「占有開始時」だけ見ればよい。これが出やすい。</div>
+      <div class="note">「占有開始時」だけで判定する、という点が試験の引っかけで非常によく出ます。</div>
     </section>
 
-    <!-- ===== 【改善③】 取得時効と登記「前か後か」===== -->
     <section>
-      <h3>取得時効と登記：「前か後か」問題（テキスト60頁）</h3>
+      <h3>取得時効と登記：「前か後か」で勝敗が決まる（テキスト60頁）</h3>
       <div class="svg-wrap">
         <svg viewBox="0 0 900 340" class="w100" role="img" aria-label="取得時効と登記の前後関係">
           <use href="#diag-jikou-maego"></use>
@@ -660,60 +637,59 @@
     </section>
 
     <section>
-      <h3>「前か後か」 整理表</h3>
+      <h3>取得時効と登記：「前か後か」の整理表</h3>
       <div class="box" style="padding:10px;">
         <table class="tbl">
           <tr>
-            <th>AC間の譲渡は<br>時効完成の…</th>
-            <th>BとCの関係</th>
-            <th>Bが勝つには</th>
+            <th>元の持ち主からの売却は<br>時効完成の…</th>
+            <th>時効取得者と第三者の関係</th>
+            <th>時効取得者が勝つには？</th>
           </tr>
           <tr>
             <td><span class="badge badge-p">前</span></td>
-            <td>Bが取得時効を<br>主張すればOK</td>
-            <td><span class="win">登記なしでも勝てる</span></td>
+            <td>時効取得者が、そのまま時効取得を主張できる</td>
+            <td><span class="win">登記がなくても勝てる</span></td>
           </tr>
           <tr>
             <td><span class="badge badge-g">後</span></td>
-            <td>対抗関係<br>（登記の早い者勝ち）</td>
-            <td><span class="lose">先に登記を得た方が勝つ</span></td>
+            <td>対抗関係<br>（登記の早い者勝ちになる）</td>
+            <td><span class="lose">先に登記を得ないと負ける</span></td>
           </tr>
         </table>
       </div>
       <div class="callout" style="margin-top:10px;">
-        <p>問題文を見たら必ず「譲渡は完成の<strong>前か後か</strong>？」を図に書く習慣をつける</p>
+        <p>問題文を見たら、第三者に売却されたのが時効完成の<strong>「前か？後か？」</strong>を必ず図に書いて確認する習慣をつけましょう。</p>
       </div>
     </section>
 
     <section>
-      <h3>「前か後か」 覚え方</h3>
+      <h3>「前か後か」 のイメージをつかむ</h3>
       <div class="grid2">
         <div class="box">
-          <p><span class="tag">前</span> = Bの権利がすでに固まってから Cが登場</p>
-          <p class="small">Cは"後から来た人"なので、Bには勝てない。<br>Bは登記なしでOK。</p>
+          <p><span class="tag">前</span> = 時効取得者の権利が確定した時には、すでに第三者がいた状態。</p>
+          <p class="small">時効によって、元の持ち主からも第三者からもまとめて権利を奪い取れるため、登記がなくても時効取得者が勝ちます。</p>
         </div>
         <div class="box">
-          <p><span class="tag">後</span> = まだBの権利が完成していない段階でCが登場</p>
-          <p class="small">BとCは"同じスタートライン"に立つ。<br>先に登記を得た方が勝つ。</p>
+          <p><span class="tag">後</span> = 時効が完成した後に、元の持ち主が第三者に売ってしまった状態。</p>
+          <p class="small">時効取得者と第三者は「同じ土地を争うライバル」になるため、対抗問題（先に登記をした方が勝つ）になります。</p>
         </div>
       </div>
-      <div class="note2">徒競走で例えると：「前」はBがゴールテープを切った後でCが走り始めた状態。「後」は二人が同時に走っていてどちらが先に登記（ゴール）するか勝負。</div>
+      <div class="note2">徒競走で例えると：「前」は時効取得者がゴールした時にはすでに第三者がいた状態。「後」は二人が同時にゴール（登記）を目指して走っている状態です。</div>
     </section>
 
-    <!-- 演習② -->
     <section>
       <h2>演習②：消滅時効＋承認</h2>
       <div class="box">
         <p><span class="tag">問題</span></p>
         <p>
-          AはBに100万円を貸した（弁済期：2020/4/1）。<br>
-          2025/4/2にBはAへ「今は厳しいが、落ち着いたら分割で払う」とメールした。<br>
-          2026/6/1、Aが請求するとBは「時効だ」と拒否。Bの主張は通るか？
+          AはBに100万円を貸した（返す約束の日：2020年4月1日）。<br>
+          2025年4月2日に、BはAへ「今は厳しいが、落ち着いたら分割で払う」とメールした。<br>
+          2026年6月1日、Aが返済を請求すると、Bは「5年経ったから時効だ」と拒否した。Bの主張は認められるか？
         </p>
         <div style="margin-top:10px;">
-          <span class="pill">狙い：承認＝更新</span>
-          <span class="pill">狙い：援用</span>
-          <span class="pill">狙い：起算点</span>
+          <span class="pill">ポイント：承認は更新（リセット）になるか</span>
+          <span class="pill">ポイント：援用しているか</span>
+          <span class="pill">ポイント：起算点はいつか</span>
         </div>
         <div style="margin-top:14px;">
           <span class="btn" data-toggle="ans2">解答を表示</span>
@@ -721,59 +697,53 @@
         <div class="answer" id="ans2">
           <div class="ttl">解答（要点）</div>
           <p>
-            結論：Bの「時効だ」は<span class="k2">通らない可能性が高い</span>。<br>
-            理由：2025/4/2のメールは<span class="k">承認</span>に当たり得る → <span class="k">時効が更新（リセット）</span>。
+            結論：Bの「時効だ」という主張は<span class="k2">認められません</span>。<br>
+            理由：2025年4月2日のメールは、借金があることを認める<span class="k">「承認」</span>に当たるため、この時点で<span class="k">時効が更新（リセット）</span>されているからです。
           </p>
           <p class="small">
-            ① 起算点：2020/4/1（弁済期）から5年経過 → 2025/4/1に完成（見た目）<br>
-            ② しかし2025/4/2の承認メールで更新 → 時計が0に戻る<br>
-            ③ リセット後2026/6/1時点ではまだ5年経過していない → 時効未完成<br>
-            ④ 仮に時効完成していても援用が必要（Bはしているが、そもそも完成していない）
+            ① 起算点：2020/4/1から5年経過した2025/4/1で、一見すると時効が完成しているように見えます。<br>
+            ② しかし、その翌日の承認メールで時効が更新され、時計が0に戻っています。<br>
+            ③ リセット後、2026/6/1時点ではまだ5年経過していないため、時効は完成していません。<br>
           </p>
-          <div class="note">落とし穴：承認は口頭・書面どちらでもOK。「払います」の一言で即リセット。</div>
+          <div class="note">落とし穴：承認は口頭やメールでも成立します。「払います」の一言で即座に時効がリセットされる点に注意しましょう。</div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== まとめ ==================== -->
     <section>
-      <h3>まとめ：今日の判断軸</h3>
+      <h3>まとめ：今日の判断の軸</h3>
       <div class="box">
-        <p><span class="k">代理</span>：代理権 → 表見代理（オーバー/アフター/ネバー）→ 無権代理</p>
-        <p><span class="k2">時効</span>：期間＋起算点 → 完成 → 援用（更新/猶予に注意）</p>
-        <p><span class="k2">時効＋登記</span>：第三者は「前か後か」で結果が180°変わる</p>
+        <p><span class="k">代理の問題</span>：まず正しい代理権があるか確認 → なければ「表見代理」が成立するか確認 → 成立しなければ「無権代理（原則無効）」</p>
+        <p><span class="k2">消滅時効の問題</span>：期間が過ぎて「完成」した上で、「援用（主張）」して初めて権利が消える。途中で「更新（リセット）」や「完成猶予（ストップ）」がないか注意する。</p>
+        <p><span class="k2">時効と登記の問題</span>：第三者が登場したのが、時効完成の「前か後か」で、勝敗のルールが180度変わることを図に書いて確認する。</p>
       </div>
     </section>
 
-    <!-- ===== ミニクイズ ===== -->
     <section>
       <h3>確認クイズ（全3問）</h3>
       <div class="box">
-        <p><span class="tag">Q1</span> BがAの代理権なしでCと契約。CはAに請求できるか？</p>
+        <p><span class="tag">Q1</span> 代理権がないBが、Aの代理人だと名乗ってCと契約した。この契約は無効なので、CはAに対して一切責任を問うことはできない。〇か×か？</p>
         <div style="margin-top:8px;"><span class="btn" data-toggle="q1">答え</span></div>
-        <div class="answer" id="q1"><p>まず<span class="k">表見代理</span>を検討。本人帰責性＋Cが善意無過失なら→A拘束。なければ→追認待ち（無権代理）。</p></div>
+        <div class="answer" id="q1"><p>×です。まず<span class="k">表見代理</span>が成立しないか（Aに落ち度があり、Cが善意無過失か）を検討します。成立すればAは責任を問われます。</p></div>
       </div>
       <div class="box" style="margin-top:14px;">
-        <p><span class="tag">Q2</span> 5年経過。相手が「時効なので払わない」と言っていない。どうなる？</p>
+        <p><span class="tag">Q2</span> 借金を返す約束の日から5年が経過した。借りた人が「時効だから払わない」と言わなくても、自動的に借金は消滅する。〇か×か？</p>
         <div style="margin-top:8px;"><span class="btn" data-toggle="q2">答え</span></div>
-        <div class="answer" id="q2"><p>完成だけでは足りない。<span class="k2">援用（主張）</span>が必要。言わない限り権利は残る。</p></div>
+        <div class="answer" id="q2"><p>×です。期間が経過して完成するだけでは足りず、必ず<span class="k2">援用（主張）</span>をしなければ借金は消滅しません。</p></div>
       </div>
       <div class="box" style="margin-top:14px;">
-        <p><span class="tag">Q3</span> Bが時効取得完成後にAがCへ譲渡。BはCに勝てるか？</p>
+        <p><span class="tag">Q3</span> Bの取得時効が完成した「後」に、元の持ち主Aが土地をCへ売却した。Bは登記がなくてもCに勝てる。〇か×か？</p>
         <div style="margin-top:8px;"><span class="btn" data-toggle="q3">答え</span></div>
-        <div class="answer" id="q3"><p>完成「後」の第三者なので<span class="k2">対抗関係</span>（登記勝負）。先に登記したCが勝つ。Bは登記なしでは負ける。</p></div>
+        <div class="answer" id="q3"><p>×です。時効完成「後」の第三者とは<span class="k2">対抗関係</span>（登記の早い者勝ち）になります。Bは登記がなければCに勝てません。</p></div>
       </div>
     </section>
 
     <section>
       <h2 class="center">END</h2>
-      <p class="center small">次回：演習（表見代理・更新/猶予・前後問題の過去問）</p>
+      <p class="center small">お疲れ様でした！次回は演習問題に挑戦しましょう！</p>
     </section>
 
-  </div><!-- /slides -->
-</div><!-- /reveal -->
-
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  </div></div><script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
 <script>
   Reveal.initialize({
